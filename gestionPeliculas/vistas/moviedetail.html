@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+    {% extends "plantilla.html" %}
+
+    {% block title %} Pelicula Detalle {% endblock %}
+
+    {% block content %}
+        
+    {% load static %}
+    <head>
+        <link href="{% static '/css/profile.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+    <body>    
+        <div class="container">
+            <div class="main-body">
+                  <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                              <h4>{{movie.title}}</h4>
+                              <p class="text-secondary mb-1">{{movie.overview}}</p>
+                              <p class="text-muted font-size-sm">{{movie.release_date}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Codigo</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{movie.id}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Lenguaje</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{movie.original_language}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Generos</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <ul>
+                              {% for genre in movie.genres %}
+                                    <li>{{genre.name}}</li>
+                              {% endfor %}
+                            </ul>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Popularidad</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{movie.popularity}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Calificación</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{movie.vote_average}}/10 en {{movie.vote_count}} votos
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      </div>
+                </div>
+            </div>
+            </body>      
+    {% endblock %}
+</html>

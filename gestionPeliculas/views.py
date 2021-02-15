@@ -22,15 +22,21 @@ def peliculas(request):
 
 def get_movie(request, codigo):
 
-    url = 'https://api.themoviedb.org/3/movie/{}?api_key=38b1ff54cd4e1a6336da76eee04c670e&language=en-US'.format(
+    url = 'https://api.themoviedb.org/3/movie/{}?api_key=38b1ff54cd4e1a6336da76eee04c670e&language=es-ES'.format(
         codigo)
 
-    movies = requests.get(url).json()
+    movie= {"movie":requests.get(url).json()}
 
-    documento = str(movies)
+    return render(request, "moviedetail.html", movie)
 
-    return HttpResponse(documento)
+def get_reserva(request, codigo):
 
+    url = 'https://api.themoviedb.org/3/movie/{}?api_key=38b1ff54cd4e1a6336da76eee04c670e&language=es-ES'.format(
+        codigo)
+
+    movie= {"movie":requests.get(url).json()}
+
+    return render(request, "detallereserva.html", movie)
 
 def login_page(request):
     return render(request, "login.html")
@@ -60,7 +66,3 @@ def cuenta(request):
     print(result)
     ctx = {"cliente": result}
     return render(request, "account.html", ctx)
-
-
-def get_movie(request, codigo):
-    

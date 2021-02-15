@@ -23,6 +23,7 @@ urlpatterns = [
     path('login/',vw.login_page, name="Login"),
     path('home/',vw.peliculas, name="Inicio"),
     path('movie/<int:codigo>',vw.get_movie, name="Pelicula"),
+    path('detalle/<int:codigo>',vw.get_reserva, name="Reserva"),
     path('',vw.ingresar, name="Validar"),
     path('account/',vw.cuenta, name="Cuenta"),
 ]
