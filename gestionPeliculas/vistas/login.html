@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+    {% extends "plantilla.html" %}
+
+    {% block title %} Movies :: Peliflix {% endblock %}
+
+    {% block content %}
+        
+    {% load static %}
+    <head>
+        <link href="{% static '/css/login.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    </head>
+    <body>
+        <div class="login">
+            <div class="login-triangle"></div>
+            
+            <h2 class="login-header">Inicio de Sesión</h2>
+          
+            <form class="login-container" action="{% url 'Validar' %}" method="POST">
+                {% csrf_token %}
+              <p><input name="username" type="text" placeholder="Correo/ Username"></p>
+              <p><input name="password" type="password" placeholder="Contraseña"></p>
+              <p><input type="submit" value="Ingresar"></p>
+            </form>
+          </div>
+    </body>
+    {% endblock %}
+</html>

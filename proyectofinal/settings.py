@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -118,6 +119,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGIN_REDIRECT_URL = reverse_lazy("Inicio")
 
 
 # Static files (CSS, JavaScript, Images)

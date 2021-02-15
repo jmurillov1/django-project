@@ -20,7 +20,9 @@ from django.conf.urls.static import static
 from gestionPeliculas import views as vw
 
 urlpatterns = [
-    path('login/',vw.login_page),
-    path('',vw.peliculas),
-    path('movie/<int:codigo>',vw.get_movie),
+    path('login/',vw.login_page, name="Login"),
+    path('home/',vw.peliculas, name="Inicio"),
+    path('movie/<int:codigo>',vw.get_movie, name="Pelicula"),
+    path('',vw.ingresar, name="Validar"),
+    path('account/',vw.cuenta, name="Cuenta"),
 ]

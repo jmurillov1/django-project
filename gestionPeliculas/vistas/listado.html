@@ -1,4 +1,9 @@
-<html>
+<!DOCTYPE HTML>
+{% extends "plantilla.html" %}
+
+{% block title %} Movies :: Peliflix {% endblock %}
+
+{% block content %}
 
 <div class="content_top">
     <div class="heading">
@@ -20,7 +25,7 @@
                 <p><span class="rupees">{{movie.release_date}}</span></p>
             </div>
             <div class="add-cart">
-                <h4><a href="preview.html">Alquilar</a></h4>
+                <h4><a href="preview.html">Ver</a></h4>
             </div>
             <div class="clear"></div>
         </div>
@@ -37,7 +42,7 @@
                 <p><span class="rupees">{{movie.release_date}}</span></p>
             </div>
             <div class="add-cart">
-                <h4><a href="preview.html">Alquilar</a></h4>
+                <h4><a href="preview.html">Ver</a></h4>
             </div>
             <div class="clear"></div>
         </div>
@@ -45,5 +50,5 @@
     {% endif %}
     {% endfor %}
 </div>
-
+{% endblock%}
 </html>

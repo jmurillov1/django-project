@@ -1,20 +1,18 @@
 <!DOCTYPE HTML>
 {% load static %}
 <head>
-    <title> Movies :: Peliflix</title>
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../static/css/slider.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="../static/js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="../static/js/move-top.js"></script>
-    <script type="text/javascript" src="../static/js/easing.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.nivo.slider.js"></script>
-    <script type="text/javascript">
-        $(window).load(function () {
-            $('#slider').nivoSlider();
-        });
-    </script>
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static '/css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="{% static '/js/jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/easing.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery.nivo.slider.js' %}"></script>
 </head>
 <body>
 <div class="header">
@@ -22,13 +20,18 @@
         <div class="wrap">
             <div class="nav_list">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{% url 'Inicio' %}">Inicio</a></li>
                 </ul>
             </div>
             <div class="account_desc">
                 <ul>
-                    <li><a href="contact.html">Login</a></li>
-                    <li><a href="#">My Account</a></li>
+                    {% if cliente is None %}
+                    <li><a href="{% url 'Login' %}">Ingresar</a></li>
+                    {% endif %}
+                    {% if cliente %}
+                        <li><a href="{% url 'Cuenta' %}">{{cliente.nombre}} {{cliente.apellido}}</a></li>
+                        <li><a href="{% url 'Login' %}">Salir</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="clear"></div>
@@ -37,7 +40,7 @@
     <div class="wrap">
         <div class="header_top">
             <div class="logo">
-                <a href="index.html"><img src="../static/images/logo.png" alt=""/></a>
+                <a href="index.html"><img src="{% static '/images/logo.png' %}" alt=""/></a>
             </div>
             <script type="text/javascript">
                 function DropDown(el) {
@@ -75,7 +78,7 @@
  <div class="main">
     <div class="wrap">
         <div class="content">
-            {% include "listado.html" %}
+            {% block content %} {% endblock content %}
         </div>
     </div>
 </div>
