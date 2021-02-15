@@ -1,0 +1,49 @@
+<html>
+
+<div class="content_top">
+    <div class="heading">
+        <h3>Peliculas Disponibles</h3>
+
+    </div>
+</div>
+<div class="section group">
+    {% for movie in nombre %}
+    {% if forloop.counter0|divisibleby:"5" %}
+    {% with item=forloop.counter %}
+    {% ifequal forloop.counter item %}
+    <div class="grid_1_of_5 images_1_of_5" style="margin-left: 0;">
+        <a href="preview.html"><img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="" /></a>
+        <h2><a href="preview.html">{{movie.id}}</a></h2>
+        <h2><a href="preview.html">{{movie.title}}</a></h2>
+        <div class="price-details">
+            <div class="price-number">
+                <p><span class="rupees">{{movie.release_date}}</span></p>
+            </div>
+            <div class="add-cart">
+                <h4><a href="preview.html">Alquilar</a></h4>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    {% endifequal %}
+    {% endwith %}
+    {% else %}
+    <div class="grid_1_of_5 images_1_of_5">
+        <a href="preview.html"><img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="" /></a>
+        <h2><a href="preview.html">{{movie.id}}</a></h2>
+        <h2><a href="preview.html">{{movie.title}}</a></h2>
+        <div class="price-details">
+            <div class="price-number">
+                <p><span class="rupees">{{movie.release_date}}</span></p>
+            </div>
+            <div class="add-cart">
+                <h4><a href="preview.html">Alquilar</a></h4>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+</html>
