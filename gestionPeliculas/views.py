@@ -7,6 +7,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 from gestionPeliculas.models import Cliente
 from django.core import serializers
+from django.http import JsonResponse
 
 
 def peliculas(request):
@@ -66,3 +67,6 @@ def cuenta(request):
     print(result)
     ctx = {"cliente": result}
     return render(request, "account.html", ctx)
+
+def get_movie_id(request, codigo):
+    return JsonResponse({"id": codigo})

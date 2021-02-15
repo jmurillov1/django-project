@@ -21,9 +21,10 @@ from gestionPeliculas import views as vw
 
 urlpatterns = [
     path('login/',vw.login_page, name="Login"),
-    path('home/',vw.peliculas, name="Inicio"),
+    path('',vw.peliculas, name="Inicio"),
     path('movie/<int:codigo>',vw.get_movie, name="Pelicula"),
     path('detalle/<int:codigo>',vw.get_reserva, name="Reserva"),
     path('',vw.ingresar, name="Validar"),
     path('account/',vw.cuenta, name="Cuenta"),
+    path('moviejson/<int:codigo>',vw.get_movie_id, name="Json"),
 ]
